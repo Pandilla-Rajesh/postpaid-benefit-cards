@@ -1,5 +1,5 @@
 import { CloseOutlined, LoginOutlined, LogoutOutlined, MenuBook, MenuOpenOutlined, MenuOutlined, Search, ShoppingCartOutlined, Translate, X } from "@mui/icons-material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from '../assets/images/band-logo.webp'
 import { Menu } from "@mui/material";
@@ -7,12 +7,25 @@ import { Menu } from "@mui/material";
 const Header = () => {
 
     const [isOpen, setIsOpen] = useState(false)
+    const [isSticky, setIsSticky] = useState(false)
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)
     }
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const topHeaderHeight = document.getElementById("topHeader")?.offsetHeight || 0;
+      if (window.scrollY > topHeaderHeight) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
 
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
     const navItems = [
 
@@ -28,7 +41,7 @@ const Header = () => {
 
     return (
         <>
-            <section className="top-0 left-0 w-full text-white top-header">
+            <section className="top-0 left-0 w-full text-white top-header" id="topHeader">
                 <article className="container mx-auto">
                     <div className="flex items-center justify-between">
                         <div className="flex">
@@ -68,7 +81,8 @@ const Header = () => {
                     </div>
                 </article>
             </section>
-            <header className="w-full shadow-sm bg-white sticky top-0 z-50">
+            <header className={`w-full bg-white duration-300
+                ${isSticky ? ' fixed left-0 top-0 z-50 shadow-md' : ' relative shadow'}`}>
                 <article className=" container mx-auto sm:px-4 md:px-0 lg:px-0">
                     <div className="flex justify-between items-center py-2 lg:py-4 
                     sm:flex-wrap md:flex-wrap flex-wrap lg:flex-wrap px-2 sm:px-2 md:px-2 lg:px-0">

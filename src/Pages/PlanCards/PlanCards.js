@@ -134,7 +134,8 @@ const PlanCards = () => {
 
             {/* Card-2-start */}
             <div className="relative flex flex-col justify-between transition bg-white border border-gray-200 shadow-md rounded-2xl hover:shadow-xl">
-              <div className="absolute z-50 px-6 py-1 text-xs font-light text-gray-100 rounded-t-lg left-1 -top-6 bg-indigo-950">
+              <div className="absolute z-20 px-6 py-1 text-xs font-light text-gray-100 
+              rounded-t-lg left-1 -top-6 bg-indigo-950">
                 Most popular
               </div>
               <div className="absolute top-0 left-0 w-2 h-full overflow-hidden bg-gradient-to-b rounded-s-xl from-pink-500 to-cyan-400"></div>
