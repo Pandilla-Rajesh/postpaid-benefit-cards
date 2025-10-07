@@ -170,7 +170,8 @@ const Header = () => {
                                 <div className="p-[2px] rounded bg-gradient-to-r via-purple-500
                                    from-pink-500 to-pink-800  transition-all
                                     ease-in-out">
-                                    <button className="bg-white hover:bg-cyan-600 hover:text-slate-50 rounded px-6 py-2">
+                                    <button className="bg-white hover:bg-cyan-600
+                                     hover:text-slate-50 rounded px-6 py-2 duration-700">
                                         <span className="text-sm font-medium">Login</span>
                                     </button>
                                 </div>

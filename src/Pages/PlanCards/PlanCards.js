@@ -12,19 +12,24 @@ const PlanCards = () => {
           {/* plans-btns */}
           <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
             <div className="p-0.5 rounded bg-gradient-to-tr from-sky-800 to-sky-400 overflow-hidden">
-              <button className="px-6 py-2 font-bold transition-all bg-white rounded text-sky-800 hover:bg-sky-50 w-52 ">
+              <button className="px-6 py-2 font-bold transition-all bg-white rounded
+               text-sky-800 hover:bg-sky-500 hover:text-slate-50 duration-700 w-52 ">
                 Power Plans
               </button>
             </div>
 
             <div className="p-0 overflow-hidden border border-gray-200 rounded">
-              <button className="px-6 py-2 font-normal text-gray-700 transition-all bg-white rounded hover:bg-sky-50 w-52">
+              <button className="px-6 py-2 font-normal text-gray-700 transition-all
+               bg-white rounded hover:bg-purple-900 hover:text-slate-50 
+               duration-700 hover:font-medium ease-in-out w-52">
                 New Emirati Plans
               </button>
             </div>
 
             <div className="p-0 overflow-hidden border border-gray-200 rounded">
-              <button className="px-6 py-2 font-normal text-gray-700 transition-all bg-white rounded hover:bg-sky-50 w-52 ">
+              <button className="px-6 py-2 font-normal text-gray-700 
+              transition-all bg-white rounded hover:bg-purple-900 hover:text-slate-50 
+               duration-700 hover:font-medium ease-in-out w-52 ">
                 Data-Only Plans
               </button>
             </div>
@@ -86,7 +91,7 @@ const PlanCards = () => {
               <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-pink-500 to-cyan-400"></div>
 
               {/* Content-start */}
-              <div className="flex flex-col justify-between flex-1 p-4 pl-6">
+              <div className="flex flex-col justify-between flex-1 p-4 pl-3 lg:pl-3 md:pl-3 sm:pl-6">
                 <div>
                   <p className="text-xs font-medium text-fuchsia-500">You Pay</p>
                   <p className="text-2xl font-bold text-fuchsia-600">
