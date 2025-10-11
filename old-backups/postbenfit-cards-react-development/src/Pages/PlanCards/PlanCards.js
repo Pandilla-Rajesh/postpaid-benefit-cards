@@ -3,8 +3,6 @@ import PlanTypes from "../PlantTypes/PlantTypes";
 import PhonePlanSelector from "../PhonePlanSelector/PhonePlanSelector";
 import WhyChooseSection from "../WhyChooseSection/WhyChooseSection";
 import PlanBenfits from "../PlanBenfits/PlanBenfits";
-import UserData from "../UserData/UserData";
-import UserGets from "../UserGets/UserGets";
 
 const PlanCards = () => {
 
@@ -12,12 +10,9 @@ const PlanCards = () => {
 
     <>
     <PlanTypes/>
-    <UserGets/>
-    {/* <UserData/> */}
     <PlanBenfits/>
     <PhonePlanSelector/>
     <WhyChooseSection/>
-
     </>
 
   )

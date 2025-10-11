@@ -1,0 +1,94 @@
+[
+  {
+    "id": 1,
+    "name": "Power Plan 125",
+    "price": "AED 125",
+    "duration": "For 12 months + 5% VAT",
+    "data": "4 GB",
+    "minutes": "100",
+    "color": "from-pink-500 via-cyan-400 to-cyan-600",
+    "features": [
+      "No activation fee. Save AED 125",
+      "4 GB free data on WiFi UAE"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Power Plan 200",
+    "price": "AED 200",
+    "duration": "For 12 months + 5% VAT",
+    "data": "26 GB",
+    "minutes": "400",
+    "color": "from-pink-500 via-cyan-400 to-cyan-600",
+    "tag": "Most popular",
+    "features": [
+      "No activation fee. Save AED 125",
+      "15 GB free data on WiFi UAE",
+      "Carry over data to next month"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Power Plan 300",
+    "price": "AED 300",
+    "duration": "For 12 months + 5% VAT",
+    "data": "50 GB",
+    "minutes": "1020",
+    "color": "from-pink-500 via-cyan-400 to-cyan-600",
+    "features": [
+      "No activation fee. Save AED 125",
+      "25 GB free data on WiFi UAE",
+      "Carry over data to next month",
+      "Amazon Prime on us",
+      "Free Internet Calling Pack"
+    ],
+    "offer": "Limited time offer",
+       "entertainer": "The Entertainer",
+    "onmonth":"on us for 12 months"
+  },
+  {
+    "id": 4,
+    "name": "Power Plan 500",
+    "price": "AED 500",
+    "duration": "For 12 months + 5% VAT",
+    "data": "100 GB",
+    "minutes": "1500",
+    "color": "from-pink-500 via-cyan-400 to-cyan-600",
+    "features": [
+      "No activation fee. Save AED 125",
+      "100 GB free data on WiFi UAE",
+      "Carry over data to next month",
+      "Amazon Prime on us",
+      "Free Internet Calling Pack",
+      "Roaming 2 GB"
+    ],
+    "offer": "Limited time offer",
+      "entertainer": "The Entertainer",
+    "onmonth":"on us for 12 months"
+  },
+  {
+    "id": 5,
+    "name": "Power Plan 1000",
+    "un-color":"absolute right-2 top-1/2 w-full h-[2px] bg-cyan-500 rotate-[-12deg] -translate-y-1/3",
+    "price": "AED 1000",
+    "duration": "For 12 months + 5% VAT",
+    "data": "Unlimited",
+    "minutes": "Unlimited",
+    "color": "from-pink-500 via-cyan-400 to-cyan-600",
+    "features": [
+      "No activation fee. Save AED 125",
+      "120 GB free data on WiFi UAE",
+      "Carry over data to next month",
+      "Amazon Prime on us",
+      "Free Internet Calling Pack",
+      "Roaming 5 GB"
+    ],
+    "offer": "Limited time offer",
+    "entertainer": "The Entertainer",
+    "onmonth":"on us for 12 months"
+  }
+]
+
+
+
+
