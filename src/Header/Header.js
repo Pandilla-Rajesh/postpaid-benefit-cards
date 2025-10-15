@@ -93,41 +93,48 @@ const Header = () => {
                             </div>
                             {/* Desktop-menu */}
                             <ul className="md:hidden hidden lg:flex flex items-center gap-0">
-                                <li className="">
-                                    <NavLink to="/" className={({ isActive }) => `text-sm font-normal 
-                                        ${isActive ? 'hover:bg-cyan-800 bg-cyan-500 text-slate-50 hover:text-slate-50 transition-all ease-in-out py-3 px-3'
-                                            : ''}`}>
-                                        Devices
+                                <li>
+                                    <NavLink to="/plancards" 
+                                    className={({ isActive }) => `text-sm font-normal rounded py-3 px-3 transition-all duration-300 
+                                        ${isActive ? 
+                                            'bg-cyan-400 text-white hover:bg-cyan-700'
+                                            : 'text-slate-800 hover:bg-cyan-800 hover:text-slate-50'}`}>
+                                        Home
                                     </NavLink>
                                 </li>
-                                <li className="">
-                                    <NavLink className={({ isActive }) => `text-slate-800 text-sm font-normal 
-                                        ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                        Mobile Plans
+                                <li>
+                                    <NavLink to="/apipages" 
+                                    className={({ isActive }) => `text-sm font-normal rounded transition-all duration-300 px-3 py-3
+                                        ${isActive ? 'bg-cyan-400 text-white hover:bg-cyan-700' 
+                                        : 'text-slate-800 hover:bg-cyan-800 hover:text-slate-50'}`}>
+                                        API's
                                     </NavLink>
                                 </li>
-                                <li className="">
-                                    <NavLink className={({ isActive }) => `text-slate-800 text-sm font-normal 
-                                        ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                        Internet & TV
+                                <li>
+                                    <NavLink to="/forms" 
+                                    className={({ isActive }) => `text-sm font-normal py-3 px-3 transition-all 
+                                    duration-300 rounded
+                                        ${isActive ? 'bg-cyan-400 text-white hover:bg-cyan-700' 
+                                        : 'text-slate-800 hover:bg-cyan-700 hover:text-slate-50'}`}>
+                                        Forms
                                     </NavLink>
                                 </li>
-                                <li className="">
+                                <li>
                                     <NavLink className={({ isActive }) => `text-slate-800 text-sm font-normal 
                                         ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                        Smart Home
+                                        Redux
                                     </NavLink>
                                 </li>
-                                <li className="">
+                                <li>
                                     <NavLink className={({ isActive }) => `text-slate-800 text-sm font-normal 
                                         ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                        Why du
+                                       Redux Toolkit
                                     </NavLink>
                                 </li>
-                                <li className="">
+                                <li>
                                     <NavLink className={({ isActive }) => `text-slate-800 text-sm font-normal 
                                         ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                        Help
+                                        Life Cycle Methods
                                     </NavLink>
                                 </li>
                             </ul>

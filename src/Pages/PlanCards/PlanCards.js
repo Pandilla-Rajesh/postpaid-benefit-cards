@@ -8,6 +8,7 @@ import UserGets from "../UserGets/UserGets";
 import { getUsers, addUser, updateUser, deleteUser } from "../../Api/UserApi";
 import UpdateForm from "../../Components/UpdateForm";
 import UserTable from "../../Components/UserTable";
+import PriceForm from "../../Components/PriceForm";
 
 const PlanCards = () => {
   const [users, setUsers] = useState([]);
@@ -56,12 +57,13 @@ const PlanCards = () => {
   return (
     <>
       <PlanTypes />
+      <PriceForm/>
       <UpdateForm
         onSubmit={handleSubmit}
         selectedUser={selectedUser}
         setSelectedUser={setSelectedUser}
       />
-      <UserTable users={users} onEdit={handleEdit} onDelete={handleDelete} />
+      <UserTable  onEdit={handleEdit} onDelete={handleDelete} />
       <UserGets />
       {/* <UserData/> */}
       <PlanBenfits />
