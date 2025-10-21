@@ -8,7 +8,7 @@ const LoginAuth =()=>{
         <section className=''>
                 <div className='w-full grid grid-cols-12 gap-0'>
                     {/* left-side-login-form */}
-                      <div className=' col-span-12 lg:col-span-8 flex flex-col items-center justify-center relative px-8 py-10 bg-white min-h-dvh'>
+                      <div className=' col-span-12 lg:col-span-9 flex flex-col items-center justify-center relative px-8 py-10 bg-white min-h-dvh'>
                         <div className='absolute left-6 top-6 flex items-center gap-3'>
                             <div className='w-10 h-10'>
                                 <img src={require('../../../src/assets/images/band-logo.webp')} alt="brand-logo"
@@ -86,7 +86,7 @@ const LoginAuth =()=>{
 
                     {/* right-side-signup-section */}
 
-                    <div className='col-span-12 lg:col-span-4 flex flex-col items-center justify-center bg-gradient-to-tr from-emerald-400
+                    <div className='col-span-12 lg:col-span-3 flex flex-col items-center justify-center bg-gradient-to-tr from-emerald-400
                     to-teal-400 p-8 relative'>
                         <h2 className='text-5xl font-sans font-semibold text-white mb-2'>New Here?</h2>
                         <p className='text-sm font-normal text-white text-center'> Sign up and discover a great amount of new opportunities!</p>
