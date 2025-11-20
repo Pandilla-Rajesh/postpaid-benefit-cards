@@ -76,7 +76,6 @@ const handleSubmit=useCallback(async(e)=>{
                     </h2>
                     </div>
                     <div>
-                        <h3 className='mb-2 text-xl'>Enter the Name</h3>
                         <form onSubmit={handleSubmit} className='flex items-center justify-center'>
                           <div>
                              <input type="text" name='userName' value={name.userName}

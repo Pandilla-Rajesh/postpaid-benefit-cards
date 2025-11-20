@@ -1,35 +1,72 @@
-import { CloseOutlined, LoginOutlined, LogoutOutlined, MenuBook, MenuOpenOutlined, MenuOutlined, Search, ShoppingCartOutlined, Translate, X } from "@mui/icons-material";
-import React, { useEffect, useState } from "react";
+import { AccessTimeOutlined, CalendarMonth, Close, CloseOutlined, LocalPhoneOutlined, LoginOutlined, LogoutOutlined, MenuBook, MenuOpenOutlined, MenuOutlined, Search, ShoppingCartOutlined, TimeToLeaveOutlined, Translate, X } from "@mui/icons-material";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from '../assets/images/band-logo.webp'
 import { Menu } from "@mui/material";
+import SideBar from "../Pages/SideBar/SideBar";
+import Slider from "../Pages/Slider/Slider";
+import ModalPopup from "../Pages/ModalPopup/ModalPopup";
 
 const Header = () => {
 
     const [isOpen, setIsOpen] = useState(false)
     const [isSticky, setIsSticky] = useState(false)
 
+    const [isOpenModal, setIsOpenModal] = useState(false)
+
+    const handleOpenModal = useCallback((e) => {
+        e.preventDefault()
+        setIsOpenModal(true)
+    })
+
+    const handleCloseModal = useCallback((e) => {
+        setIsOpenModal(false)
+    })
+
     const toggleMenu = () => {
         setIsOpen(!isOpen)
     }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const topHeaderHeight = document.getElementById("topHeader")?.offsetHeight || 0;
-      if (window.scrollY > topHeaderHeight) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
+    const [open, setOpen] = useState(false)
+    const handOpen = () => {
+        setOpen(true)
+    }
+
+    const handleScroll = (id) => {
+        const section = document.getElementById(id);
+        if(section) {
+            section.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+        }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    useEffect(() => {
+        if((open)) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'auto'
+        }
+    }, [open])
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const topHeaderHeight = document.getElementById("topHeader")?.offsetHeight || 0;
+            if(window.scrollY > topHeaderHeight) {
+                setIsSticky(true);
+            } else {
+                setIsSticky(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const navItems = [
 
-        { name: 'Mobile Plans', path: "/" },
+        { name: 'Mobile Plans', path: "/", },
         { name: 'Internet & TV', path: "/" },
         { name: 'Smart Home', path: "/" },
         { name: 'Why du', path: "/" },
@@ -41,19 +78,26 @@ const Header = () => {
 
     return (
         <>
-            <section className="top-0 left-0 w-full text-white top-header" id="topHeader">
+            {/* <section className="top-0 left-0 w-full text-white top-header" id="topHeader">
                 <article className="container mx-auto">
                     <div className="flex items-center justify-between">
-                        <div className="flex">
-                            <NavLink to="/" className={({ isActive }) => `text-slate-50 font-semibold 
+                        <div className="flex items-center">
+                            <NavLink to="/" className={ ({ isActive }) => `text-slate-50 font-semibold 
                          text-sm hover:bg-blue-800 transition ease-in-out py-2 px-3
-                        ${isActive ? 'bg-blue-900' : ''}`}>
-                                Consumer
+                        ${isActive ? 'bg-blue-900' : ''}` }>
+                                <span className="flex items-center gap-1">
+                                    <span><LocalPhoneOutlined /></span>
+                                    <span className=" font-semibold">180042546464</span>
+                                </span>
                             </NavLink>
-                            <NavLink to="/" className={({ isActive }) => `text-slate-50 font-normal
+                            <NavLink to="/"
+                                className={ ({ isActive }) => `text-slate-50 font-normal
                         text-sm hover:bg-blue-800 transition ease-in-out py-2 px-3
-                        ${isActive ? '' : ''}`}>
-                                Business
+                        ${isActive ? '' : ''}` }>
+                                <span className="flex items-center gap-1">
+                                    <AccessTimeOutlined />
+                                    <span className=" font-semibold">8:00 AM - 8:00 PM</span>
+                                </span>
                             </NavLink>
                         </div>
                         <div>
@@ -80,163 +124,155 @@ const Header = () => {
                         </div>
                     </div>
                 </article>
-            </section>
-            <header className={`w-full bg-white duration-300
-                ${isSticky ? ' fixed left-0 top-0 z-50 shadow-md' : ' relative shadow'}`}>
-                <article className=" container mx-auto sm:px-4 md:px-0 lg:px-0">
-                    <div className="flex justify-between items-center py-2 lg:py-4 
+            </section> */}
+            <header className={ `w-full duration-300 z-50
+                ${isSticky ? 'bg-white fixed left-0 top-0 shadow-md z-50' :
+                    'absolute top-0 left-0'}` }>
+                <article className="  container-xl mx-auto md:px-0 lg:px-0">
+                    <div className="flex justify-between items-center py-0 lg:py-0 
                     sm:flex-wrap md:flex-wrap flex-wrap lg:flex-wrap px-2 sm:px-2 md:px-2 lg:px-0">
-                        {/*Logo-start */}
-                        <div className=" flex items-center flex-grow gap-6">
-                            <div className="space-x-2">
-                                <img src={Logo} loading="lazy" className="w-10 h-10" alt="brand" />
+                        {/*Logo-start */ }
+                        <div className="mt-2 relative flex items-center justify-center gap-5">
+
+                            <div>
+                                { isSticky ? (
+                                    <>
+                                        <div className="px-4 py-2">
+                                            <img
+                                                src={ require("../assets/images/ts-logo-new.png") }
+                                                loading="lazy"
+                                                className="w-[120px] rounded-b-md rounded-t-none"
+                                                alt="brand"
+                                            />
+                                        </div>
+                                    </>) : (
+                                    <>
+                                        <div className="px-4 py-2">
+                                            <img
+                                                src={ require("../assets/images/ts-logo-new.png") }
+                                                loading="lazy"
+                                                className="w-[120px] rounded-b-md rounded-t-none"
+                                                alt="brand"
+                                            />
+                                        </div>
+                                    </>
+                                ) }
                             </div>
-                            {/* Desktop-menu */}
-                            <ul className="md:hidden hidden lg:flex flex items-center gap-0">
-                                <li>
-                                    <NavLink to="/plancards" 
-                                    className={({ isActive }) => `text-sm font-normal rounded py-3 px-3 transition-all duration-300 
-                                        ${isActive ? 
-                                            'bg-cyan-400 text-white hover:bg-cyan-700'
-                                            : 'text-slate-800 hover:bg-cyan-800 hover:text-slate-50'}`}>
-                                        Home
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/apipages" 
-                                    className={({ isActive }) => `text-sm font-normal rounded transition-all duration-300 px-3 py-3
-                                        ${isActive ? 'bg-cyan-400 text-white hover:bg-cyan-700' 
-                                        : 'text-slate-800 hover:bg-cyan-800 hover:text-slate-50'}`}>
-                                        API's
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/forms" 
-                                    className={({ isActive }) => `text-sm font-normal py-3 px-3 transition-all 
-                                    duration-300 rounded
-                                        ${isActive ? 'bg-cyan-400 text-white hover:bg-cyan-700' 
-                                        : 'text-slate-800 hover:bg-cyan-700 hover:text-slate-50'}`}>
-                                        Forms
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink className={({ isActive }) => `text-slate-800 text-sm font-normal 
-                                        ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                        Redux
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink className={({ isActive }) => `text-slate-800 text-sm font-normal 
-                                        ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                       Redux Toolkit
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink className={({ isActive }) => `text-slate-800 text-sm font-normal 
-                                        ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                        Life Cycle Methods
-                                    </NavLink>
-                                </li>
-                            </ul>
-                            {/* menu-end */}
-                        </div>
-                        {/* end-logo */}
-                        {/* Right-side-menu */}
-                        <div className="hidden md:hidden lg:flex items-center gap-0">
-                            <ul className="flex items-center gap-4 text-sm">
-                                <li>
-                                    <NavLink className={({ isActive }) => `text-slate-700 text-sm 
-                                        ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                        Quick Pay
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink className={({ isActive }) => `text-slate-700 text-sm 
-                                        ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                        Recharge
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink className={({ isActive }) => `text-slate-700 text-sm 
-                                        ${isActive ? 'hover:bg-cyan-800 py-3 px-3 hover:text-slate-50' : ''}`}>
-                                        Renew ID
-                                    </NavLink>
-                                </li>
-                            </ul>
-
-                            <div className="flex lg:gap-6 items-center">
-                                {/* cart-icon */}
-                                <div className=" relative">
-                                    <ShoppingCartOutlined className="w-5 h-5 text-gray-600" />
-                                    <span className=" absolute -top-2 -right-2 text-sm bg-pink-600 text-white
-                                      rounded-full px-1.5">0</span>
-                                </div>
-                                {/* end */}
-
-                                {/* Login-btn */}
-                                <div className="p-[2px] rounded bg-gradient-to-r via-purple-500
-                                   from-pink-500 to-pink-800  transition-all
-                                    ease-in-out">
-                                    <button className="bg-white hover:bg-cyan-600
-                                     hover:text-slate-50 rounded px-6 py-2 duration-700">
-                                        <span className="text-sm font-medium">Login</span>
-                                    </button>
-                                </div>
-                                {/* Login-btn-end */}
+                            <hr className="w-[2px] h-[100px] bg-green-700" />
+                            <div>
+                                <img src={ require('../assets/images/tsgovt-logo.png') } alt="ts-govt-logo" className="w-[150px]"
+                                    loading="lazy" srcSet={ require('../assets/images/tsgovt-logo.png') } datatype="async" />
                             </div>
-                        </div>
-                        {/* right-menu-end */}
-                        <div className="flex items-center gap-4">
 
-                            {/* Mobile-cart */}
-                            <Link to="/" className="text-gray-700 relative lg:hidden xl:hidden md:visible">
-                                <ShoppingCartOutlined />
-                                <span className=" absolute -top-2 -right-2 text-sm 
-                                    bg-pink-500 px-1.5 rounded-full text-slate-50">0</span>
-                            </Link>
-                            {/* end */}
-
-                            {/* Mobile-only-login-icon */}
-                            <Link to="/" className="lg:hidden xl:hidden md:visible" aria-label="Login">
-                                <LoginOutlined fontSize="medium" />
-                            </Link>
-                            {/* end */}
-                            {/* Monile-only-menu toggle */}
-                            <button onClick={toggleMenu} type="button"
-                                aria-expanded={isOpen} aria-label={isOpen ? 'Close menu' : 'Open menu'}
-                                className=" text-gray-700 focus:outline-none md:visible
-                             lg:hidden xl:hidden transition-all ease-in-out">
-                                {isOpen ? (
-                                    <CloseOutlined fontSize="medium" />
-                                ) : (
-                                    <MenuOutlined fontSize="medium" />
-                                )}
-                            </button>
-                            {/* end */}
                         </div>
-                        {/* mobile-menu */}
-                        {isOpen && (
-                            <div className="w-full bg-gradient-to-t
-                                     to-purple-100 via-purple-900 from-purple-100 px-3 
-                                     my-2 relative z-50 rounded-sm">
-                                <ul className="absolute left-0 px-2 right-0 top-full
-                                          bg-gradient-to-t from-purple-950 via-sky-800 
-                                          to-cyan-600 z-50 rounded-md mb-5">
-                                    {navItems?.map((item, index) => (
-                                        <li key={index}>
-                                            <NavLink className={({ isActive }) => `block px-2 py-1 rounded transition leading-relaxed my-2 text-slate-50
-                                            ${isActive ? 'bg-white/5 font-normal hover:bg-white hover:text-cyan-800' : 'hover:bg-white hover:text-purple-600'}`}>
-                                                {item.name}
-                                            </NavLink>
-                                        </li>
-                                    ))}
-                                </ul>
+                        {/* end-logo */ }
+
+                        {/* end */ }
+
+                        <div className="flex items-center gap-0 h-100 relative">
+                            <div className="me-1">
+
+                                <button onClick={ () => handleScroll('packages') }
+                                    className={ ` info-ab-ex ${isSticky ?
+                                        ' text-white px-5 p-3 bg-green-700 font-normal text-2xl' :
+                                        'bg-green-700 px-5 p-3 text-white font-normal text-2xl'}` }>
+                                    <span>
+                                        <CalendarMonth /> Book a Tour
+                                        {/* <LocalPhoneOutlined fontSize="medium" /> */ }
+                                    </span>
+                                </button>
+
                             </div>
-                        )}
-                        {/* end */}
+
+                            <SideBar />
+                        </div>
+
                     </div>
                 </article>
             </header>
+            <Slider />
+
+            <div className='flex flex-col items-center justify-center'>
+                { open && (
+                    <div className='fixed inset-0 flex items-center justify-center bg-black/50 z-50'>
+                        {/* modal content */ }
+                        <div className='bg-white relative rounded-md shadow-xl w-11/12 md:w-1/3'>
+                            <div className="bg-green-700 px-4 py-2">
+                                <h2 className="text-5xl text-green-100 font-normal
+                                 text-white info-ab-ex">
+                                    Book a Tour
+                                </h2>
+                                <p className="text-sm text-green-50">Lorem Ipsum is simply dummy text of
+                                    the printing </p>
+                            </div>
+                            <button
+                                onClick={ () => setOpen(false) }
+                                className='bg-blue-900 px-4 py-4 absolute top-0 right-0 
+                                text-white hover:text-white'
+                            >
+                                <Close />
+                            </button>
+                            <div className="px-4 py-4">
+                                <div className="mb-2">
+                                    <label class="block text-sm text-gray-700 text-sm font-normal mb-2" for="username">
+                                        Full Name
+                                    </label>
+                                    <input type="text" className="w-full px-2 py-2 border border-gray-300"
+                                        placeholder="Your Name" />
+                                </div>
+                                <div className="mb-2">
+                                    <label class="block text-sm text-gray-700 text-sm font-normal mb-2" for="username">
+                                        Email Address
+                                    </label>
+                                    <input type="text" className="w-full px-2 py-2 border border-gray-300"
+                                        placeholder="Your Email ID" />
+                                </div>
+                                <div className="mb-2">
+                                    <label class="block text-sm text-gray-700 text-sm font-normal mb-2" for="username">
+                                        Phone Number
+                                    </label>
+                                    <input type="text" className="w-full px-2 py-2 border border-gray-300"
+                                        placeholder="Contact Number" />
+                                </div>
+                                <div className="mb-2">
+                                    <label class="block text-sm text-gray-700 text-sm font-normal mb-2" for="username">
+                                        City/Country
+                                    </label>
+                                    <input type="text" className="w-full px-2 py-2 border border-gray-300"
+                                        placeholder="Where are you travelling from?" />
+                                </div>
+                                <div className="mb-2">
+                                    <label class="block text-sm text-gray-700 text-sm font-normal mb-2" for="username">
+                                        Number of Travellers
+                                    </label>
+                                    <input type="number"
+                                        className="w-full px-2 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        placeholder="Where are you travelling from?" />
+                                </div>
+                                <div className="mb-2">
+                                    <label class="block text-sm text-gray-700 text-sm font-normal mb-2" for="username">
+                                        Number of Travellers
+                                    </label>
+                                    <textarea name="" cols="5" rows="4" className="w-full px-2 py-2 border border-gray-300
+                                     focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        placeholder="Tell us what kind of experience you’re looking for…" >
+                                    </textarea>
+
+                                </div>
+                            </div>
+                            <div className="flex items-center justify-center">
+                                <button onClick={ () => setOpen(false) }
+                                    className="px-2 py-3 w-full uppercase bg-slate-700 text-white
+                                     hover:bg-blue-900 transition duration-300 font-bold"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ) }
+            </div>
+
         </>
     )
 }

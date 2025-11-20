@@ -3,32 +3,37 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // import PlanCards from './Pages/PlanCards/PlanCards'
 // import MainPage from './MainPage/MainPage'
 
-const LoginAuth = lazy(()=>import('./AuthPages/Login/LoginAuth'))
+const Home = React.lazy(() => import('./Pages/Home/Home'))
+const LoginAuth = lazy(() => import('./AuthPages/Login/LoginAuth'))
 const MainPage = lazy(() => import('./MainPage/MainPage'))
 const PlanCards = lazy(() => import('./Pages/PlanCards/PlanCards'))
 const ApiPages = lazy(() => import('./Components/APIS/ApiPages'))
-const FormsUi = lazy(()=>import('./Components/Forms/FormUi'))
+const FormsUi = lazy(() => import('./Components/Forms/FormUi'))
+const ParentProp = React.lazy(() => import('./Components/Props/ParentProp'))
 
 function Approutes() {
 
   const router = createBrowserRouter([
 
-    {index:true, element:(<Suspense fallback={<div>...Loading</div>}><LoginAuth/></Suspense>)},
-    {path:'login', element:(<Suspense fallback={<div>...Loading</div>}><LoginAuth/></Suspense>)},
-    {path: '/', element: (<Suspense fallback={<div>...Loading</div>}><MainPage /></Suspense>),
+    // {index:true, element:(<Suspense fallback={<div>...Loading</div>}><LoginAuth/></Suspense>)},
+    // {path:'login', element:(<Suspense fallback={<div>...Loading</div>}><LoginAuth/></Suspense>)},
+    {
+      path: '/', element: (<Suspense fallback={ <div>...Loading</div> }><MainPage /></Suspense>),
 
       children: [
-        // { index: true, element: (<Suspense fallback={<div>...Loading</div>}><PlanCards /></Suspense>) },
-        { path: 'plancards', element: (<Suspense fallback={<div>...Loading</div>}><PlanCards /></Suspense>) },
-        { path: 'apipages', element: (<Suspense fallback={<div>...Loading</div>}><ApiPages /></Suspense>) },
-        {path:'forms', element:(<Suspense fallback={<div>...Loading</div>}><FormsUi/></Suspense>)}
+        { index: true, element: (<Suspense fallback={ <div>...Loading</div> }><PlanCards /></Suspense>) },
+        { path: 'home', element: (<Suspense fallback={ <div>...Loading</div> }><Home /></Suspense>) },
+        { path: 'plancards', element: (<Suspense fallback={ <div>...Loading</div> }><PlanCards /></Suspense>) },
+        { path: 'apipages', element: (<Suspense fallback={ <div>...Loading</div> }><ApiPages /></Suspense>) },
+        { path: 'forms', element: (<Suspense fallback={ <div>...Loading</div> }><FormsUi /></Suspense>) },
+        { path: 'props', element: (<Suspense fallback={ <div>...Loading</div> }><ParentProp /></Suspense>) }
 
       ]
 
     },
   ])
-  return (<Suspense fallback={<div>...Loading</div>}> 
-  <RouterProvider router={router}></RouterProvider></Suspense>)
+  return (<Suspense fallback={ <div>...Loading</div> }>
+    <RouterProvider router={ router }></RouterProvider></Suspense>)
 }
 
 export default Approutes

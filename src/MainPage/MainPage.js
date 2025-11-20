@@ -1,19 +1,23 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
+import Footer from "../Pages/Footer/Footer";
 
-const MainPage=()=>{
+const MainPage = () => {
 
-    return(
+    return (
         <>
 
-            <header>
-                <Header/>
+            <header className=" relative">
+                <Header />
             </header>
 
             <main>
-                <Outlet/>
+                <Outlet />
             </main>
+            <footer>
+                <Footer />
+            </footer>
         </>
     )
 }

@@ -6,8 +6,8 @@ const WhyChooseSection = () => {
     return (
         <>
             <section className="py-4 border-b border-gray-300 sm:py-4 md:py-4
-            bg-gray-100 lg:py-8 mb-5">
-                <article className="container px-4 mx-auto">
+            bg-gray-100 lg:py-8 mb-0">
+                {/* <article className="container px-4 mx-auto">
                     <ul className="flex flex-col items-start justify-center gap-6 lg:gap-0 sm:gap-6 md:flex-row md:gap-6">
                         <li className="flex items-start gap-2">
                             <span className="flex items-center justify-center w-10 h-10">
@@ -55,7 +55,7 @@ const WhyChooseSection = () => {
                             </div>
                         </li>
                     </ul>
-                </article>
+                </article> */}
             </section>
         </>
     )
